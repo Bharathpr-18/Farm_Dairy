@@ -1,216 +1,1056 @@
-{% load static %}
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f8ed">
-  <meta name="description" content="A smarter, simpler way to manage your dairy farm — cattle, milk collection, payments and reports.">
-  <title>Siri Dairy — Smarter Dairy Farming</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-:root{--ink:#20372b;--muted:#69776c;--green:#2f704a;--green-dark:#225b3b;--lime:#dff1b8;--cream:#f5f8ed;--paper:#fffef9;--line:#e4eadb;--yellow:#f9d879;--radius:28px;--shadow:0 20px 60px rgba(40,76,47,.10)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans","Noto Sans Kannada",sans-serif;line-height:1.6;overflow-x:hidden}body.kn{font-family:"Noto Sans Kannada","DM Sans",sans-serif}a{color:inherit;text-decoration:none}button{font:inherit}.section-wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}.announcement{height:34px;background:#244d35;color:#f7ffe9;display:flex;align-items:center;justify-content:center;gap:9px;font-size:11px;letter-spacing:.04em}.announcement-dot{width:6px;height:6px;border-radius:50%;background:#c7ed84;box-shadow:0 0 0 4px #ffffff14}.site-header{height:82px;display:flex;align-items:center;justify-content:space-between;width:min(1240px,calc(100% - 48px));margin:auto;position:relative;z-index:20}.brand{display:flex;align-items:center;gap:10px}.brand-mark{width:39px;height:39px;display:grid;place-items:center;border-radius:14px;background:#e1f0c7;color:#2e6a42;font-size:25px;transform:rotate(-8deg)}.brand strong{display:block;font-size:17px;line-height:1.2;letter-spacing:-.04em}.brand small{display:block;font-size:8px;font-weight:800;letter-spacing:.15em;color:#849181;margin-top:4px}.nav-links{display:flex;align-items:center;gap:31px;font-size:12px;font-weight:700;color:#56675a}.nav-links>a:not(.nav-cta):hover{color:var(--green)}.nav-cta{padding:12px 18px;border-radius:99px;background:var(--green);color:white;box-shadow:0 8px 18px #2f704a24}.language-switch{border:1px solid var(--line);background:white;border-radius:99px;padding:8px 11px;font-size:11px;color:#617060;cursor:pointer}.lang-active{font-weight:800;color:var(--green)}.lang-divider{padding:0 5px;color:#b7c0b1}.menu-toggle{display:none;border:0;background:#eaf2df;border-radius:12px;padding:10px 12px;color:var(--green);font-size:18px}
-.hero{min-height:615px;display:grid;grid-template-columns:1fr 1.04fr;align-items:center;position:relative;padding-top:18px;padding-bottom:66px}.hero-copy{padding:25px 0 35px;position:relative;z-index:3}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#6d8665;font-size:9px;font-weight:800;letter-spacing:.14em}.hero h1,.section-heading h2,.workflow-copy h2,.about-copy h2,.cta-content h2{font-size:clamp(46px,5.1vw,70px);line-height:1.04;letter-spacing:-.065em;margin:22px 0 20px;font-weight:800}.hero h1 em,.section-heading h2 em,.workflow-copy h2 em,.about-copy h2 em,.cta-content h2 em{font-family:Georgia,serif;font-weight:500;color:var(--green);letter-spacing:-.07em}.hero-description{font-size:14px;line-height:1.9;color:var(--muted);max-width:450px}.hero-actions{display:flex;align-items:center;gap:25px;margin-top:28px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;gap:22px;padding:15px 20px;border-radius:99px;font-size:12px;font-weight:800;transition:transform .25s,box-shadow .25s}.button:hover{transform:translateY(-3px)}.button-primary{background:var(--green);color:white;box-shadow:0 12px 25px #2f704a26}.button-primary:hover{box-shadow:0 16px 30px #2f704a35}.text-link{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;color:var(--ink)}.play-icon{display:grid;place-items:center;width:29px;height:29px;border:1px solid #dfe7d8;border-radius:50%;font-size:9px;color:var(--green);padding-left:2px}.hero-proof{display:flex;align-items:center;gap:13px;margin-top:42px}.avatar-stack{display:flex;padding-left:2px}.avatar-stack span{width:31px;height:31px;display:grid;place-items:center;background:#f0e9d5;border:2px solid var(--paper);border-radius:50%;font-size:15px;margin-left:-5px}.avatar-stack span:first-child{margin-left:0}.hero-proof strong,.hero-proof small{display:block}.hero-proof strong{font-size:10px}.hero-proof small{font-size:9px;color:#899387;margin-top:2px}.hero-art{height:490px;position:relative;display:grid;place-items:center;isolation:isolate}.hero-art:before{content:"";position:absolute;width:430px;height:430px;border-radius:50%;background:#eaf4d9;z-index:-3;top:24px;left:50%;transform:translateX(-50%)}.sun-halo{position:absolute;top:36px;right:15%;width:94px;height:94px;border-radius:50%;background:#f8d879;opacity:.8;box-shadow:0 0 0 18px #f8d87922;z-index:-2}.cloud{position:absolute;width:62px;height:18px;background:white;border-radius:99px;opacity:.85;z-index:-1;filter:drop-shadow(0 5px 7px #9fbf8b20)}.cloud:before,.cloud:after{content:"";position:absolute;bottom:3px;border-radius:50%;background:white}.cloud:before{width:25px;height:25px;left:10px}.cloud:after{width:19px;height:19px;left:29px}.cloud-one{top:105px;left:8%}.cloud-two{top:170px;right:6%;transform:scale(.7)}.cow-stage{width:100%;height:390px;position:absolute;bottom:25px;left:0;overflow:hidden}.cow-illustration{position:absolute;width:min(450px,100%);height:auto;left:50%;bottom:5px;transform:translateX(-50%);z-index:2;animation:cowFloat 3.8s ease-in-out infinite;filter:drop-shadow(0 18px 10px #355b3720)}.cow-video{position:absolute;z-index:3;width:min(450px,100%);height:100%;left:50%;bottom:0;transform:translateX(-50%);object-fit:contain}.grass-back{position:absolute;width:115%;height:130px;bottom:0;left:-8%;background:#b7d88d;border-radius:50% 50% 0 0/60% 60% 0 0;z-index:0}.grass-front{position:absolute;bottom:-34px;left:-5%;width:110%;height:90px;background:#82b76c;border-radius:50% 50% 0 0/45% 45% 0 0;z-index:3}.floating-note{position:absolute;z-index:5;display:flex;align-items:center;gap:10px;background:#fffef9eF;backdrop-filter:blur(10px);padding:12px 15px;border:1px solid #ffffff;border-radius:17px;box-shadow:var(--shadow);animation:noteFloat 4s ease-in-out infinite}.note-milk{top:98px;left:0}.note-leaf{right:0;bottom:90px;animation-delay:-2s}.note-icon{width:34px;height:34px;display:grid;place-items:center;background:#eaf4d9;border-radius:11px;font-size:18px}.floating-note strong,.floating-note small{display:block;white-space:nowrap}.floating-note strong{font-size:10px}.floating-note small{font-size:9px;color:#8a9685;margin-top:2px}.flower{position:absolute;z-index:4;color:#fff7cf;text-shadow:0 1px 1px #5b8d4b;font-size:26px;animation:flowerWiggle 3s ease-in-out infinite}.flower-one{bottom:44px;left:17%}.flower-two{bottom:72px;right:19%;font-size:20px;animation-delay:-1s}.flower-three{bottom:28px;right:12%;font-size:17px;animation-delay:-2s}.sparkle{position:absolute;color:#e6ad3d;font-size:25px;z-index:4;animation:sparkle 2.8s ease-in-out infinite}.sparkle-one{top:105px;right:24%}.sparkle-two{top:210px;left:12%;animation-delay:-1.3s}.art-caption{position:absolute;bottom:0;display:flex;align-items:center;gap:8px;font-size:10px;color:#66775e;font-weight:700}.caption-check{display:grid;place-items:center;width:17px;height:17px;border-radius:50%;background:#dff0c4;color:#326c43;font-size:10px}.hero-bottom{position:absolute;bottom:12px;left:0;display:flex;align-items:center;gap:15px;color:#9aa491;font-size:8px;font-weight:800;letter-spacing:.12em}.hero-bottom i{width:4px;height:4px;background:#c4d2b9;border-radius:50%}.stats-strip{background:#f3f6e9;border-top:1px solid #e9eedf;border-bottom:1px solid #e9eedf}.stats-inner{width:min(1160px,calc(100% - 48px));min-height:120px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr) 1.1fr;align-items:center;gap:22px}.stat-item{display:flex;align-items:center;gap:13px;border-right:1px solid #dfe7d4}.stat-emoji{font-size:25px}.stat-item strong{font-size:24px;letter-spacing:-.06em;display:block;line-height:1.15}.stat-item small{display:block;color:#7d8978;font-size:9px;margin-top:4px}.stats-note{font-family:Georgia,serif;font-style:italic;font-size:19px;color:#547452;text-align:right}.features-section{padding-top:116px;padding-bottom:120px}.section-heading{text-align:center;max-width:620px;margin:0 auto 52px}.section-heading h2,.workflow-copy h2,.about-copy h2{font-size:clamp(38px,4.1vw,54px);margin:16px 0}.section-heading p,.workflow-copy>p,.about-copy>p{color:var(--muted);font-size:13px;line-height:1.9}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.feature-card{border-radius:24px;padding:23px 20px 20px;min-height:290px;display:flex;flex-direction:column;overflow:hidden;transition:transform .3s,box-shadow .3s}.feature-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}.feature-green{background:#eef5e4}.feature-yellow{background:#fff5d8}.feature-lilac{background:#f3eefb}.feature-blue{background:#eaf4f8}.feature-top{display:flex;align-items:center;justify-content:space-between}.feature-icon{width:42px;height:42px;display:grid;place-items:center;background:#ffffffb5;border-radius:14px;font-size:21px}.feature-number{font-size:10px;font-weight:800;color:#94a18c}.feature-card h3{font-size:17px;letter-spacing:-.04em;margin:24px 0 8px}.feature-card p{font-size:11px;line-height:1.8;color:#748072;margin:0}.mini-chart{height:43px;display:flex;align-items:flex-end;gap:8px;margin-top:auto;padding-top:18px}.mini-chart span{flex:1;background:#8dbd6f;border-radius:5px 5px 2px 2px;animation:chartGrow 1.2s ease both;transform-origin:bottom}.mini-chart span:nth-child(2n){background:#b5d48d}.animal-pills{display:flex;gap:5px;flex-wrap:wrap;margin-top:auto;padding-top:20px}.animal-pills span{font-size:8px;font-weight:700;background:#ffffffa6;border-radius:99px;padding:7px 8px}.receipt-line{margin-top:auto;padding:12px 0 2px;display:flex;justify-content:space-between;gap:5px;border-bottom:1px solid #e2d8f0;font-size:9px;color:#7f768b}.receipt-line strong{color:#54416f}.report-preview{display:flex;gap:5px;margin-top:auto;padding-top:23px;align-items:flex-end}.report-preview span{flex:1;height:29px;background:#b8d9e4;border-radius:4px 4px 0 0;text-align:center;font-size:7px;padding-top:34px;color:#627e86;position:relative}.report-preview span:before{content:"";position:absolute;bottom:0;left:25%;width:50%;height:var(--h,60%);background:#78b4c8;border-radius:4px 4px 0 0}.report-preview span:nth-child(2):before{height:45%}.report-preview span:nth-child(3):before{height:75%}.report-preview span:nth-child(4):before{height:56%}.report-preview span:nth-child(5):before{height:88%}.report-preview span:nth-child(6):before{height:70%}
-.workflow-section{background:#f5f7ef;padding:104px 0}.workflow-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:95px;align-items:center}.workflow-copy h2{font-size:clamp(40px,4vw,53px)}.workflow-copy .text-link{margin-top:20px;color:var(--green)}.steps{display:grid;gap:12px}.step-card{display:grid;grid-template-columns:42px 1fr 45px;gap:16px;align-items:center;padding:20px 22px;background:#fffef9;border:1px solid #e9edde;border-radius:20px;transition:transform .25s,box-shadow .25s}.step-card:hover{transform:translateX(5px);box-shadow:0 12px 30px #335c3210}.step-num{width:38px;height:38px;display:grid;place-items:center;border-radius:13px;background:#e7f1d8;color:#3f7449;font-weight:800;font-size:12px}.step-card h3{margin:0 0 4px;font-size:13px}.step-card p{margin:0;font-size:10px;color:#82907d}.step-art{font-size:25px;text-align:center}.about-section{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;padding-top:120px;padding-bottom:120px}.about-art{height:340px;position:relative;display:grid;place-items:center;background:#f3f6e8;border-radius:48% 52% 42% 58%/50% 45% 55% 50%;overflow:hidden}.about-orbit{position:absolute;border:1px dashed #c3d5af;border-radius:50%;width:275px;height:275px;animation:orbit 25s linear infinite}.orbit-two{width:215px;height:215px;border-style:solid;opacity:.55;animation-direction:reverse}.about-cow-bubble{display:grid;place-items:center;width:155px;height:155px;background:#fffdf4;border-radius:50%;font-size:83px;box-shadow:0 20px 45px #42633a14;animation:cowFloat 4s ease-in-out infinite}.about-leaf{position:absolute;font-size:32px}.leaf-a{top:55px;left:18%}.leaf-b{right:18%;bottom:57px}.about-star{position:absolute;right:24%;top:55px;color:#e6b84b;font-size:27px;animation:sparkle 2s infinite}.about-copy h2{font-size:clamp(38px,4vw,52px)}.about-values{display:flex;gap:17px;flex-wrap:wrap;margin-top:25px;font-size:10px;font-weight:800;color:#52744b}.about-values>span{display:flex;gap:5px;align-items:center}.about-values>span:first-letter{color:#6e9c56}.cta-section{padding-bottom:100px}.cta-card{position:relative;overflow:hidden;background:#2f704a;border-radius:32px;padding:64px 70px;color:white;min-height:345px;display:flex;align-items:center;justify-content:space-between}.cta-content{position:relative;z-index:2;max-width:590px}.cta-content .eyebrow{color:#c6dfa9}.cta-content h2{font-size:clamp(38px,4.4vw,56px);margin:15px 0}.cta-content h2 em{color:#e3f1bf}.cta-content p{font-size:12px;color:#d0e1ce}.button-light{margin-top:15px;background:#f8f8e9;color:#2d6843}.cta-decoration{position:absolute;border:1px solid #ffffff20;border-radius:50%;pointer-events:none}.cta-circle{width:450px;height:450px;right:-70px;top:-160px;box-shadow:0 0 0 45px #ffffff08,0 0 0 90px #ffffff05}.cta-spark{right:37%;top:45px;color:#e6edb8;font-size:30px;border:0;animation:sparkle 2s infinite}.cta-mascot{font-size:125px;position:relative;z-index:1;filter:drop-shadow(0 18px 12px #133d252d);animation:cowFloat 3.5s infinite}.cta-mascot span{position:absolute;font-size:28px;right:3px;top:0;color:#f7d77e}.site-footer{width:min(1160px,calc(100% - 48px));margin:auto;min-height:100px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:25px 0}.site-footer p{font-size:10px;color:#879282}.footer-copy{font-size:10px;color:#879282}.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}.reveal.is-visible{opacity:1;transform:translateY(0)}
-@keyframes cowFloat{0%,100%{transform:translate(-50%,0) rotate(-.5deg)}50%{transform:translate(-50%,-9px) rotate(.5deg)}}@keyframes noteFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes flowerWiggle{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(9deg)}}@keyframes sparkle{0%,100%{transform:scale(.8) rotate(0);opacity:.65}50%{transform:scale(1.2) rotate(18deg);opacity:1}}@keyframes chartGrow{from{transform:scaleY(.1)}to{transform:scaleY(1)}}@keyframes orbit{to{transform:rotate(360deg)}}
-@media(min-width:1400px){.hero{min-height:670px}.hero-art{transform:scale(1.05)}}@media(max-width:950px){.nav-links{gap:17px}.hero{grid-template-columns:1fr 1fr;min-height:560px}.hero h1{font-size:55px}.hero-art{transform:scale(.92)}.feature-grid{grid-template-columns:repeat(2,1fr)}.feature-card{min-height:255px}.workflow-layout{gap:45px}.about-section{gap:45px}.stats-inner{grid-template-columns:repeat(2,1fr);padding:23px 0}.stat-item:nth-child(2){border-right:0}.stats-note{text-align:left}.hero-bottom{font-size:7px}}@media(max-width:700px){.section-wrap{width:calc(100% - 34px)}.site-header{width:calc(100% - 34px);height:70px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:#fffef9;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow);align-items:stretch;gap:17px;flex-direction:column}.nav-links.open{display:flex}.nav-cta{text-align:center}.language-switch{align-self:flex-start}.hero{display:flex;flex-direction:column;align-items:stretch;padding-top:28px;padding-bottom:55px}.hero-copy{padding:10px 0 0}.hero h1{font-size:clamp(47px,12vw,64px);margin-top:18px}.hero-description{font-size:13px}.hero-proof{margin-top:28px}.hero-art{height:420px;transform:none;margin-top:5px}.hero-art:before{width:min(390px,96vw);height:min(390px,96vw);top:15px}.cow-stage{height:330px;bottom:28px}.cow-illustration{width:min(410px,112%);bottom:4px}.floating-note{padding:9px 11px;gap:7px}.note-milk{top:48px;left:-4px}.note-leaf{right:-4px;bottom:72px}.note-icon{width:28px;height:28px;font-size:15px}.floating-note strong{font-size:9px}.floating-note small{font-size:8px}.sun-halo{width:65px;height:65px;right:10%;top:23px}.hero-bottom{bottom:7px;gap:8px;font-size:6px;letter-spacing:.06em}.art-caption{font-size:9px;bottom:-8px}.stats-inner{width:calc(100% - 34px);gap:20px 12px;min-height:auto;padding:27px 0}.stat-item{gap:8px}.stat-emoji{font-size:20px}.stat-item strong{font-size:21px}.stat-item small{font-size:8px}.stats-note{font-size:16px}.features-section{padding-top:78px;padding-bottom:78px}.section-heading{margin-bottom:32px}.section-heading h2,.workflow-copy h2,.about-copy h2{font-size:42px}.section-heading p{font-size:12px}.feature-grid{gap:10px}.feature-card{padding:17px 14px;border-radius:19px;min-height:270px}.feature-icon{width:36px;height:36px;font-size:18px}.feature-card h3{font-size:15px;margin-top:19px}.feature-card p{font-size:10px}.workflow-section{padding:75px 0}.workflow-layout{grid-template-columns:1fr;gap:32px}.workflow-copy h2{font-size:43px}.step-card{padding:16px;grid-template-columns:38px 1fr 32px;gap:12px}.step-card h3{font-size:12px}.step-card p{font-size:9px}.step-art{font-size:22px}.about-section{grid-template-columns:1fr;gap:35px;padding-top:80px;padding-bottom:80px}.about-art{height:290px;order:2}.about-copy{order:1}.about-cow-bubble{width:135px;height:135px;font-size:72px}.about-orbit{width:240px;height:240px}.orbit-two{width:190px;height:190px}.about-copy h2{font-size:42px}.cta-section{padding-bottom:65px}.cta-card{padding:40px 25px 30px;min-height:390px;align-items:flex-start;border-radius:25px}.cta-content h2{font-size:42px}.cta-content p{max-width:260px}.cta-mascot{position:absolute;right:13px;bottom:15px;font-size:85px;opacity:.9}.cta-spark{right:15%;top:30px}.site-footer{width:calc(100% - 34px);flex-wrap:wrap;justify-content:space-between;gap:10px}.site-footer p{order:3;flex-basis:100%;margin:0}.footer-copy{font-size:9px}}@media(max-width:380px){.feature-grid{grid-template-columns:1fr}.feature-card{min-height:220px}.hero h1{font-size:45px}.hero-art{height:370px}.cow-stage{height:295px}.hero-bottom{letter-spacing:0;gap:5px}.hero-bottom span{font-size:5px}.stats-inner{grid-template-columns:1fr 1fr}.stat-item{border:0}.stats-note{font-size:14px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Simple dairy farm management for cows, milk, health, feed and farm records.">
+<title>Meadow & Milk | Dairy Farm Management</title>
 
+<style>
+:root {
+  --green: #315b3d;
+  --light-green: #e9eddf;
+  --cream: #f7f5ed;
+  --white: #fffef9;
+  --gold: #e9c77b;
+  --text: #26352b;
+  --muted: #657367;
+  --border: #e4e6da;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+img, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+.container {
+  width: min(1160px, calc(100% - 36px));
+  margin: auto;
+}
+
+h1, h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+h1 { font-size: clamp(42px, 6vw, 76px); margin: 20px 0; }
+h2 { font-size: clamp(32px, 4vw, 50px); margin: 12px 0 18px; }
+h3 { margin: 0 0 8px; }
+p { color: var(--muted); }
+
+.eyebrow {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--green);
+  border-radius: 30px;
+  padding: 13px 21px;
+  background: var(--green);
+  color: white;
+  font-weight: bold;
+  transition: .2s;
+}
+
+.btn:hover {
+  background: #24472e;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  color: var(--green);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  color: white;
+}
+
+/* Navigation */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  min-height: 82px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-size: 24px;
+}
+
+.brand small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  font-weight: normal;
+}
+
+nav { display: flex; align-items: center; gap: 25px; }
+nav a { font-size: 14px; font-weight: bold; }
+nav a:hover { color: var(--green); }
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: none;
+  font-size: 26px;
+  color: var(--green);
+}
+
+/* Hero */
+
+.hero { padding: 35px 0 75px; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  align-items: center;
+  gap: 42px;
+}
+
+.hero-copy > p {
+  max-width: 440px;
+  font-size: 17px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+
+.hero-photo {
+  position: relative;
+  height: 570px;
+  overflow: hidden;
+  border-radius: 28px 28px 90px 28px;
+  background: #dce7d1;
+}
+
+.hero-photo video,
+.hero-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-photo img { z-index: 0; }
+.hero-photo video { z-index: 1; }
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(transparent, #102213a8);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  z-index: 3;
+  color: white;
+}
+
+.photo-caption p { color: #f4f4ed; margin: 4px 0 0; }
+
+.floating-card {
+  position: absolute;
+  z-index: 4;
+  padding: 17px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 10px 35px #26352b20;
+}
+
+.milk-card { left: -15px; top: 30px; }
+.health-card { right: -10px; bottom: 60px; }
+
+.floating-card small { color: var(--muted); }
+.metric { font: 32px Georgia, serif; color: var(--green); }
+
+/* Quick features strip */
+
+.proof-strip {
+  background: var(--light-green);
+  padding: 22px 0;
+}
+
+.proof-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.proof-item { font-weight: bold; font-size: 14px; }
+
+/* General sections */
+
+.section { padding: 85px 0; }
+
+.section-heading {
+  max-width: 650px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.section-heading p { font-size: 15px; }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.feature-card {
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: .25s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px #26352b12;
+}
+
+.feature-image {
+  height: 255px;
+  overflow: hidden;
+  background: #e5eadb;
+}
+
+.feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.feature-card:hover img { transform: scale(1.04); }
+
+.feature-body { padding: 20px; }
+.feature-body p { font-size: 14px; margin-bottom: 12px; }
+
+.feature-number {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Farm story */
+
+.story { background: var(--light-green); }
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 55px;
+}
+
+.story-photo {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+  border-radius: 25px;
+  background: #dce7d1;
+}
+
+.story-photo img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+}
+
+.story-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: var(--white);
+  padding: 16px;
+  border-radius: 14px;
+}
+
+.story-badge strong { font: 23px Georgia, serif; }
+
+.check-list { list-style: none; padding: 0; }
+
+.check-list li {
+  padding: 8px 0;
+  font-weight: bold;
+}
+
+.check-list li span { color: var(--green); margin-right: 8px; }
+
+/* Dashboard */
+
+.dashboard-section { padding: 85px 0; }
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+}
+
+.dashboard-main, .dashboard-side { padding: 28px; }
+.dashboard-side { background: #f0f2e9; }
+
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.demo-label {
+  padding: 6px 10px;
+  background: #e4f0dc;
+  border-radius: 20px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stat {
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.stat span { display: block; font-size: 12px; color: var(--muted); }
+.stat strong { display: block; font: 25px Georgia, serif; margin: 7px 0; }
+.stat small { font-size: 10px; color: var(--green); }
+
+.chart-box {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+.chart-box svg { width: 100%; height: 150px; }
+
+.activity {
+  display: flex;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #dfe3d5;
+}
+
+.activity:last-child { border: 0; }
+.activity-icon { font-size: 22px; }
+.activity strong { font-size: 14px; }
+.activity p { margin: 3px 0; font-size: 12px; }
+
+.note {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #dfead3;
+  font-size: 13px;
+}
+
+/* How it works */
+
+.workflow { background: var(--green); color: white; }
+.workflow .eyebrow { color: var(--gold); }
+.workflow p { color: #d1ddce; }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.step {
+  padding-top: 18px;
+  border-top: 1px solid #ffffff55;
+}
+
+.step-number { color: var(--gold); font: 38px Georgia, serif; }
+.step h3 { margin-top: 10px; }
+.step p { font-size: 14px; }
+
+/* Call to action and footer */
+
+.cta { padding: 75px 0; }
+
+.cta-box {
+  padding: 48px;
+  border-radius: 25px;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.cta-box p { color: #4d5a43; }
+
+footer {
+  background: #f0efe5;
+  padding: 28px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+footer p, footer a { font-size: 12px; }
+
+/* Interactive demo form */
+
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  padding: 20px;
+  background: #15251bdc;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-backdrop.open { display: flex; }
+
+.modal {
+  position: relative;
+  width: min(500px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 30px;
+  border-radius: 22px;
+  background: var(--white);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  border: 0;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 23px;
+}
+
+.form-row { margin: 15px 0; }
+.form-row label { display: block; margin-bottom: 6px; font-weight: bold; font-size: 13px; }
+.form-row input, .form-row select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: white;
+}
+
+.success {
+  display: none;
+  margin-top: 15px;
+  padding: 12px;
+  background: #e4f0dc;
+  border-radius: 10px;
+  color: var(--green);
+  font-size: 13px;
+}
+
+.success.show { display: block; }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr 1fr; gap: 25px; }
+  .hero-photo { height: 470px; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .story-grid { gap: 28px; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  nav { gap: 12px; }
+  nav a { font-size: 12px; }
+}
+
+@media (max-width: 650px) {
+  header { min-height: 72px; }
+  .menu-toggle { display: block; }
+  nav {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 18px;
+    right: 18px;
+    z-index: 10;
+    padding: 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    align-items: stretch;
+  }
+  nav.open { display: flex; flex-direction: column; }
+  nav a { font-size: 15px; }
+  .header-demo { display: none; }
+  .hero { padding: 20px 0 55px; }
+  .hero-grid, .story-grid, .dashboard { grid-template-columns: 1fr; }
+  .hero-photo { height: 420px; }
+  .milk-card { left: 10px; top: 15px; }
+  .health-card { right: 8px; bottom: 45px; }
+  .section, .dashboard-section { padding: 65px 0; }
+  .features-grid { grid-template-columns: 1fr; }
+  .feature-image { height: 280px; }
+  .story-photo { min-height: 380px; }
+  .dashboard-main, .dashboard-side { padding: 20px; }
+  .stats { gap: 7px; }
+  .stat { padding: 9px; }
+  .stat strong { font-size: 21px; }
+  .stat span { font-size: 10px; }
+  .steps { grid-template-columns: 1fr; }
+  .cta-box { display: block; padding: 28px; }
+  .cta-box .btn { margin-top: 18px; }
+}
 </style>
 </head>
+
 <body>
-  <div class="announcement"><span class="announcement-dot"></span><span data-en="A happier, healthier way to run your dairy" data-kn="ನಿಮ್ಮ ಹೈನುಗಾರಿಕೆಗೆ ಸುಲಭವಾದ, ಉತ್ತಮ ಮಾರ್ಗ">A happier, healthier way to run your dairy</span></div>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="Siri Dairy home">
-      <span class="brand-mark" aria-hidden="true">✳</span>
-      <span><strong>Siri Dairy</strong><small data-en="FARM MANAGEMENT" data-kn="ಹೈನುಗಾರಿಕೆ ನಿರ್ವಹಣೆ">FARM MANAGEMENT</small></span>
+<div id="home">
+
+<header class="container">
+  <a class="brand" href="#home">
+    <span class="brand-icon">S</span>
+    <h1>Siri</h1>
+    <p>Siri.., The Platform for your Dairy Records..,</p>
+  </a>
+
+  <nav id="mainNav">
+    <a href="#features">Features</a>
+    <a href="#records">Dashboard</a>
+    <a href="#how">How it works</a>
+    <button class="btn" data-open-demo>Try the demo ↗</button>
+  </nav>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Made for everyday farm life</span>
+      <h1>Healthy cows.<br>Better farming.</h1>
+      <p>Manage your cows, milk production, health records, feed and farm expenses in one simple place.</p>
+
+      <div class="hero-actions">
+        <button class="btn" data-open-demo>Explore the dashboard →</button>
+        <a class="btn btn-outline" href="#features">View features ↓</a>
+      </div>
+
+      <p><strong>🐄 Herd health &nbsp; 🥛 Milk records &nbsp; 🌱 Feed management</strong></p>
+    </div>
+
+    <div class="hero-photo">
+      <img
+        src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1400&q=85"
+        alt="Dairy cows standing in a green pasture"
+        onerror="this.style.display='none'">
+
+      <video autoplay muted loop playsinline
+        poster="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1400&q=85"
+        aria-label="Cows grazing in a pasture">
+        <source src="https://www.shutterstock.com/shutterstock/videos/3819810745/preview/stock-footage-herd-of-indian-cows-standing-at-green-mountains-in-manali-himachal-pradesh-india-cows-in-outdoor.webm" type="video/mp4">
+      </video>
+
+      <div class="photo-caption">
+        <strong>Good care starts every day.</strong>
+      </div>
+
+      <div class="floating-card milk-card">
+        <small>Today's milk log</small>
+        <div class="metric">1,248 L</div>
+        <small>Illustrative demo data</small>
+      </div>
+
+      <div class="floating-card health-card">
+        <strong>💚 Herd health</strong>
+        <small>Care reminders in one place</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="proof-strip">
+  <div class="container proof-inner">
+    <span class="proof-item">🥛 Milk production</span>
+    <span class="proof-item">🐄 Cow profiles</span>
+    <span class="proof-item">💚 Health records</span>
+    <span class="proof-item">🐮 Calving records</span>
+    <span class="proof-item">🌾 Feed & fodder</span>
+  </div>
+</div>
+
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-heading">
+      <h2> Everything in one place</h2>
+      <h2>Your whole farm,<br>easier to manage.</h2>
+      <p>Simple tools for the work you do every day.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <article class="feature-card">
+        <div class="feature-image">
+          <img loading="lazy"
+            src="https://pethelpful.com/.image/NDowMDAwMDAwMDAwMTExOTA3/brahman-cow-side-profile.jpg?profile=share4-3&x=55&y=48"
+            alt="Close-up of a dairy cow">
+        </div>
+        <div class="feature-body">
+          <span class="feature-number">01 · HERD</span>
+          <h3>🐄 Cow profiles</h3>
+          <p>Animal ID, breed, age, photo and full history.</p>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-image">
+          <img loading="lazy"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9eH-JEO4zJYSEyzH1M6dHJUJtuRZ0zMiExlQf4ySo5M6HMoCOGeiwgv-j&s=10"
+            alt="Fresh milk in a glass">
+        </div>
+        <div class="feature-body">
+          <span class="feature-number">02 · MILK</span>
+          <h3>🥛 Milk production</h3>
+          <p>Record morning and evening milk yield and totals.</p>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-image">
+          <img loading="lazy"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6lSDumyokCL6LcOVkG9YwGHNaf3MDf83Gt10GNOZcIg&s=10"
+            alt="Healthy cow in a green field">
+        </div>
+        <div class="feature-body">
+          <span class="feature-number">03 · HEALTH</span>
+          <h3>💚 Health & treatment</h3>
+          <p>Vaccinations, vet visits, medicines and reminders.</p>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-image">
+          <img loading="lazy"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTykvRtEDOkfBmAFiVBg5nfN1uJrgV5tPLWVKC6npS2bQ&s"
+            alt="Green farmland and grazing land">
+        </div>
+        <div class="feature-body">
+          <span class="feature-number">04 · FEED</span>
+          <h3>🌱 Feed & fodder</h3>
+          <p>Track feed stock, daily usage and feed expenses.</p>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-image">
+          <img loading="lazy"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTttcPY5SbltupiVylGP6zPzXCHY2nxCU_gIifmPI4xpg&s=10"
+            alt="Sunlight shining through green trees">
+        </div>
+        <div class="feature-body">
+          <span class="feature-number">05 · BREEDING</span>
+          <h3>🐮 Breeding & calves</h3>
+          <p>Heat cycles, pregnancy checks, calving and calf details.</p>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-image">
+          <img loading="lazy"
+            src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=85"
+            alt="Fresh produce from a farm">
+        </div>
+        <div class="feature-body">
+          <span class="feature-number">06 · BUSINESS</span>
+          <h3>📊 Income & expenses</h3>
+          <p>Keep milk income, feed costs and other expenses together.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section story">
+  <div class="container story-grid">
+    <div class="story-photo">
+      <img loading="lazy"
+        src="https://images.unsplash.com/photo-1527153857715-3908f2d7fd05?auto=format&fit=crop&w=1200&q=85"
+        alt="Cows in a peaceful pasture">
+      <div class="story-badge">
+        <strong>Care comes first.</strong>
+        <div>Better records support better decisions.</div>
+      </div>
+    </div>
+
+    <div>
+      <span class="eyebrow">Made for real farm routines</span>
+      <h2>More time for your animals.</h2>
+      <p>Keep everyday farm information organised and easier to find.</p>
+
+      <ul class="check-list">
+        <li><span>✓</span> One record for every animal</li>
+        <li><span>✓</span> Reminders for health and breeding</li>
+        <li><span>✓</span> Milk production at a glance</li>
+        <li><span>✓</span> Clear expense records</li>
+      </ul>
+
+      <button class="btn" data-open-demo>Explore the demo →</button>
+    </div>
+  </div>
+</section>
+
+<section class="dashboard-section" id="records">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Sample dashboard</span>
+      <h2>Your farm at a glance.</h2>
+      <p>These are example figures to demonstrate the interface, not live farm data.</p>
+    </div>
+
+    <div class="dashboard">
+      <div class="dashboard-main">
+        <div class="dashboard-top">
+          <h3>Good morning, farm team 👋</h3>
+          <span class="demo-label">DEMO DATA</span>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <span>Herd size</span>
+            <strong>86</strong>
+            <small>Animals registered</small>
+          </div>
+          <div class="stat">
+            <span>Milk today</span>
+            <strong>1,248 L</strong>
+            <small>Sample total</small>
+          </div>
+          <div class="stat">
+            <span>Tasks due</span>
+            <strong>07</strong>
+            <small>Review today</small>
+          </div>
+        </div>
+
+        <div class="chart-box">
+          <strong>Milk production · last 7 days</strong>
+          <svg viewBox="0 0 500 150" preserveAspectRatio="none"
+            role="img" aria-label="Illustrative milk production chart">
+            <g stroke="#e4e6da" stroke-width="1">
+              <path d="M0 30H500 M0 65H500 M0 100H500 M0 135H500"/>
+            </g>
+            <path d="M0 110 L75 90 L145 98 L215 65 L285 75 L355 45 L425 52 L500 25"
+              fill="none" stroke="#47734b" stroke-width="4"
+              stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#47734b">
+              <circle cx="0" cy="110" r="4"/>
+              <circle cx="75" cy="90" r="4"/>
+              <circle cx="145" cy="98" r="4"/>
+              <circle cx="215" cy="65" r="4"/>
+              <circle cx="285" cy="75" r="4"/>
+              <circle cx="355" cy="45" r="4"/>
+              <circle cx="425" cy="52" r="4"/>
+              <circle cx="500" cy="25" r="4"/>
+            </g>
+          </svg>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:#657367">
+            <span>Mon</span><span>Tue</span><span>Wed</span>
+            <span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="dashboard-side">
+        <h3>Today's farm tasks</h3>
+
+        <div class="activity">
+          <span class="activity-icon">💚</span>
+          <div>
+            <strong>Health check</strong>
+            <p>Review animal health records.</p>
+          </div>
+        </div>
+
+        <div class="activity">
+          <span class="activity-icon">🌾</span>
+          <div>
+            <strong>Fodder stock</strong>
+            <p>Review remaining feed supplies.</p>
+          </div>
+        </div>
+
+        <div class="activity">
+          <span class="activity-icon">🐮</span>
+          <div>
+            <strong>Calving calendar</strong>
+            <p>Review upcoming checks.</p>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>Tip:</strong> Keep daily records updated to make reports and reminders more useful.
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section workflow" id="how">
+  <div class="container">
+    <span class="eyebrow">Easy to get started</span>
+    <h2>Four simple steps.</h2>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step-number">01</div>
+        <h3>Add your cows</h3>
+        <p>Register animal IDs and important details.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-number">02</div>
+        <h3>Record the day</h3>
+        <p>Log milk yield, feed and farm activities.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-number">03</div>
+        <h3>Set reminders</h3>
+        <p>Schedule health checks and breeding events.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-number">04</div>
+        <h3>Review results</h3>
+        <p>Understand production and farm expenses.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-box">
+      <div>
+        <span class="eyebrow">A more organised farm</span>
+        <h2>Let's make farm work simpler.</h2>
+        <p>Explore the sample dairy management experience.</p>
+      </div>
+      <button class="btn" data-open-demo>Try the demo ↗</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a class="brand" href="#home">
+      <span class="brand-icon">🐄</span>
+      <span>meadow & milk<small>DAIRY FARM MANAGEMENT</small></span>
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-      <a href="#features" data-en="Features" data-kn="ವೈಶಿಷ್ಟ್ಯಗಳು">Features</a>
-      <a href="#how-it-works" data-en="How it works" data-kn="ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ">How it works</a>
-      <a href="#about" data-en="About" data-kn="ನಮ್ಮ ಬಗ್ಗೆ">About</a>
-      <button class="language-switch" id="languageSwitch" type="button" aria-label="Switch language"><span class="lang-active">EN</span><span class="lang-divider">/</span><span>ಕನ್ನಡ</span></button>
-      <a class="nav-cta" href="#get-started" data-en="Get started ↗" data-kn="ಪ್ರಾರಂಭಿಸಿ ↗">Get started ↗</a>
-    </nav>
-  </header>
+    <p>© <span id="year"></span> Meadow & Milk · Website concept</p>
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
 
-  <main>
-    <section class="hero section-wrap" id="home">
-      <div class="hero-copy">
-        <div class="eyebrow"><span>🌿</span><span data-en="MADE FOR MODERN DAIRY FARMS" data-kn="ಆಧುನಿಕ ಹೈನುಗಾರಿಕೆಗಾಗಿ">MADE FOR MODERN DAIRY FARMS</span></div>
-        <h1 data-en="Small farm.<br><em>Big possibilities.</em>" data-kn="ಸಣ್ಣ ಹೈನುಗಾರಿಕೆ.<br><em>ದೊಡ್ಡ ಸಾಧ್ಯತೆಗಳು.</em>">Small farm.<br><em>Big possibilities.</em></h1>
-        <p class="hero-description" data-en="Your everyday dairy work, made delightfully simple. Track milk, care for cattle, manage payments and understand your farm — all in one friendly place." data-kn="ನಿಮ್ಮ ದೈನಂದಿನ ಹೈನುಗಾರಿಕೆಯನ್ನು ಸುಲಭಗೊಳಿಸಿ. ಹಾಲಿನ ದಾಖಲೆ, ಜಾನುವಾರುಗಳ ಆರೈಕೆ, ಪಾವತಿ ಮತ್ತು ವರದಿಗಳನ್ನು ಒಂದೇ ಸ್ಥಳದಲ್ಲಿ ನಿರ್ವಹಿಸಿ.">Your everyday dairy work, made delightfully simple. Track milk, care for cattle, manage payments and understand your farm — all in one friendly place.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#get-started"><span data-en="Explore the system" data-kn="ವ್ಯವಸ್ಥೆಯನ್ನು ನೋಡಿ">Explore the system</span><span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="#features"><span class="play-icon">▶</span><span data-en="See what you can do" data-kn="ಏನು ಮಾಡಬಹುದು ನೋಡಿ">See what you can do</span></a>
-        </div>
-        <div class="hero-proof"><div class="avatar-stack"><span>👩🏽‍🌾</span><span>👨🏽‍🌾</span><span>🐮</span></div><div><strong data-en="Made for real farm life" data-kn="ನೈಜ ಹೈನುಗಾರಿಕೆಗಾಗಿ">Made for real farm life</strong><small data-en="Simple tools. Clear records. Less worry." data-kn="ಸರಳ ಸಾಧನಗಳು. ಸ್ಪಷ್ಟ ದಾಖಲೆಗಳು. ಕಡಿಮೆ ಚಿಂತೆ.">Simple tools. Clear records. Less worry.</small></div></div>
+</div>
+
+<div class="modal-backdrop" id="demoModal" role="dialog"
+  aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+    <span class="eyebrow">Interactive demo</span>
+    <h2 id="modalTitle">Tell us about your farm.</h2>
+    <p>This sample form demonstrates a possible farm setup flow. It does not send data to a server.</p>
+
+    <form id="demoForm">
+      <div class="form-row">
+        <label for="farmName">Farm name</label>
+        <input id="farmName" required placeholder="e.g. Green Valley Dairy">
       </div>
 
-      <div class="hero-art" aria-label="Cute animated cow on a farm">
-        <div class="sun-halo"></div><span class="cloud cloud-one"></span><span class="cloud cloud-two"></span>
-        <div class="floating-note note-milk"><span class="note-icon">🥛</span><span><strong data-en="Milk collected" data-kn="ಸಂಗ್ರಹಿಸಿದ ಹಾಲು">Milk collected</strong><small>+ <span data-en="daily records" data-kn="ದೈನಂದಿನ ದಾಖಲೆಗಳು">daily records</span></small></span></div>
-        <div class="floating-note note-leaf"><span class="note-icon">🌱</span><span><strong data-en="Farm fresh" data-kn="ತಾಜಾ ಹೈನು ಉತ್ಪನ್ನ">Farm fresh</strong><small data-en="Every little detail" data-kn="ಪ್ರತಿ ಸಣ್ಣ ವಿವರ">Every little detail</small></span></div>
-        <div class="cow-stage">
-          <div class="grass-back"></div>
-          <img class="cow-illustration" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20520%20420%22%20role%3D%22img%22%20aria-labelledby%3D%22title%20desc%22%3E%0A%3Ctitle%20id%3D%22title%22%3ECute%20cartoon%20dairy%20cow%3C%2Ftitle%3E%3Cdesc%20id%3D%22desc%22%3EA%20friendly%20white%20cow%20with%20black%20spots%2C%20pink%20ears%20and%20muzzle%2C%20standing%20on%20a%20green%20meadow.%3C%2Fdesc%3E%0A%3Cdefs%3E%0A%20%3ClinearGradient%20id%3D%22body%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22.2%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23fffef8%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e9eee2%22%2F%3E%3C%2FlinearGradient%3E%0A%20%3ClinearGradient%20id%3D%22pink%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23ffb6ae%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f28e8b%22%2F%3E%3C%2FlinearGradient%3E%0A%20%3Cfilter%20id%3D%22shadow%22%20x%3D%22-30%25%22%20y%3D%22-30%25%22%20width%3D%22160%25%22%20height%3D%22170%25%22%3E%3CfeDropShadow%20dx%3D%220%22%20dy%3D%228%22%20stdDeviation%3D%225%22%20flood-color%3D%22%2342683c%22%20flood-opacity%3D%22.12%22%2F%3E%3C%2Ffilter%3E%0A%3C%2Fdefs%3E%0A%3C%21--%20tail%20--%3E%0A%3Cpath%20d%3D%22M374%20244%20Q431%20242%20419%20293%20Q413%20312%20431%20319%22%20fill%3D%22none%22%20stroke%3D%22%23f5f3e8%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M426%20310%20Q451%20310%20444%20332%20Q435%20346%20420%20330Z%22%20fill%3D%22%23242c27%22%2F%3E%0A%3C%21--%20legs%20--%3E%0A%3Cg%20filter%3D%22url%28%23shadow%29%22%3E%0A%20%3Cpath%20d%3D%22M151%20282%20L149%20355%20Q147%20373%20165%20374%20L184%20374%20Q195%20371%20191%20354%20L195%20284Z%22%20fill%3D%22url%28%23body%29%22%20stroke%3D%22%23dbe1d6%22%20stroke-width%3D%222%22%2F%3E%0A%20%3Cpath%20d%3D%22M150%20354%20L191%20354%20L191%20367%20Q191%20378%20177%20378%20L160%20378%20Q148%20378%20150%20366Z%22%20fill%3D%22%23303a32%22%2F%3E%0A%20%3Cpath%20d%3D%22M275%20286%20L278%20354%20Q276%20373%20293%20374%20L310%20374%20Q323%20371%20317%20353%20L317%20280Z%22%20fill%3D%22url%28%23body%29%22%20stroke%3D%22%23dbe1d6%22%20stroke-width%3D%222%22%2F%3E%0A%20%3Cpath%20d%3D%22M278%20354%20L318%20354%20L318%20367%20Q318%20378%20304%20378%20L288%20378%20Q276%20378%20278%20366Z%22%20fill%3D%22%23303a32%22%2F%3E%0A%20%3Cpath%20d%3D%22M336%20277%20L345%20350%20Q344%20368%20361%20369%20L377%20369%20Q389%20366%20382%20348%20L374%20269Z%22%20fill%3D%22url%28%23body%29%22%20stroke%3D%22%23dbe1d6%22%20stroke-width%3D%222%22%2F%3E%0A%20%3Cpath%20d%3D%22M345%20349%20L383%20349%20L385%20362%20Q385%20373%20372%20373%20L356%20373%20Q345%20373%20345%20361Z%22%20fill%3D%22%23303a32%22%2F%3E%0A%3C%2Fg%3E%0A%3C%21--%20body%20--%3E%0A%3Cpath%20d%3D%22M117%20182%20Q119%20147%20164%20143%20L337%20145%20Q383%20149%20390%20195%20L383%20277%20Q378%20305%20348%20306%20L159%20304%20Q126%20301%20119%20272Z%22%20fill%3D%22url%28%23body%29%22%20stroke%3D%22%23dbe1d6%22%20stroke-width%3D%223%22%20filter%3D%22url%28%23shadow%29%22%2F%3E%0A%3C%21--%20spots%20--%3E%0A%3Cpath%20d%3D%22M159%20153%20Q184%20140%20207%20158%20Q218%20175%20196%20196%20Q175%20210%20155%20191%20Q142%20174%20159%20153Z%22%20fill%3D%22%23303a32%22%2F%3E%0A%3Cpath%20d%3D%22M295%20156%20Q326%20139%20349%20165%20Q359%20184%20338%20198%20Q313%20208%20298%20190%20Q287%20175%20295%20156Z%22%20fill%3D%22%23303a32%22%2F%3E%0A%3Cpath%20d%3D%22M223%20247%20Q246%20228%20264%20247%20Q276%20266%20258%20287%20Q236%20301%20220%20281%20Q211%20264%20223%20247Z%22%20fill%3D%22%23303a32%22%2F%3E%0A%3Cpath%20d%3D%22M332%20237%20Q349%20223%20370%20239%20L367%20270%20Q351%20284%20334%20268Z%22%20fill%3D%22%23303a32%22%2F%3E%0A%3C%21--%20udder%20--%3E%0A%3Cpath%20d%3D%22M224%20292%20Q249%20281%20271%20293%20L266%20315%20Q260%20327%20253%20314%20L249%20325%20Q243%20332%20239%20319%20L235%20324%20Q229%20328%20228%20315Z%22%20fill%3D%22%23f4a6a0%22%20stroke%3D%22%23df8984%22%20stroke-width%3D%222%22%2F%3E%0A%3C%21--%20neck%2Fhead%20--%3E%0A%3Cpath%20d%3D%22M146%20164%20Q128%20121%20158%2083%20Q183%2052%20235%2062%20Q284%2063%20304%20102%20Q320%20134%20294%20179%20L269%20218%20L171%20212Z%22%20fill%3D%22url%28%23body%29%22%20stroke%3D%22%23dbe1d6%22%20stroke-width%3D%223%22%20filter%3D%22url%28%23shadow%29%22%2F%3E%0A%3C%21--%20head%20patches%20--%3E%0A%3Cpath%20d%3D%22M165%2086%20Q182%2063%20204%2076%20Q219%2090%20203%20116%20Q184%20133%20166%20115Z%22%20fill%3D%22%23303a32%22%2F%3E%0A%3Cpath%20d%3D%22M251%2076%20Q276%2080%20285%20103%20Q287%20124%20267%20130%20Q245%20125%20245%20105Z%22%20fill%3D%22%23303a32%22%2F%3E%0A%3C%21--%20ears%20--%3E%0A%3Cpath%20d%3D%22M167%2091%20Q127%2061%20104%2084%20Q96%2098%20124%20112%20L165%20122Z%22%20fill%3D%22%23fffef8%22%20stroke%3D%22%23dbe1d6%22%20stroke-width%3D%223%22%2F%3E%0A%3Cpath%20d%3D%22M145%2095%20Q123%2083%20115%2091%20Q116%20100%20143%20108Z%22%20fill%3D%22%23f6a4a0%22%2F%3E%0A%3Cpath%20d%3D%22M269%2091%20Q306%2058%20330%2081%20Q342%2096%20312%20112%20L278%20123Z%22%20fill%3D%22%23fffef8%22%20stroke%3D%22%23dbe1d6%22%20stroke-width%3D%223%22%2F%3E%0A%3Cpath%20d%3D%22M292%2094%20Q315%2079%20323%2089%20Q320%20100%20294%20109Z%22%20fill%3D%22%23f6a4a0%22%2F%3E%0A%3C%21--%20horns%20--%3E%0A%3Cpath%20d%3D%22M178%2076%20Q161%2054%20173%2039%20Q190%2046%20194%2072Z%22%20fill%3D%22%23f2d6a2%22%20stroke%3D%22%23d6b67c%22%20stroke-width%3D%222%22%2F%3E%0A%3Cpath%20d%3D%22M258%2072%20Q266%2047%20284%2044%20Q291%2061%20276%2082Z%22%20fill%3D%22%23f2d6a2%22%20stroke%3D%22%23d6b67c%22%20stroke-width%3D%222%22%2F%3E%0A%3C%21--%20forelock%20--%3E%0A%3Cpath%20d%3D%22M187%2072%20Q196%2051%20218%2061%20Q235%2044%20252%2067%20Q267%2077%20255%2091%20Q239%2087%20227%2098%20Q213%2083%20198%2091Z%22%20fill%3D%22%23303a32%22%2F%3E%0A%3C%21--%20face%20--%3E%0A%3Cellipse%20cx%3D%22225%22%20cy%3D%22137%22%20rx%3D%2270%22%20ry%3D%2258%22%20fill%3D%22%23fffdf5%22%2F%3E%0A%3C%21--%20eyes%20--%3E%0A%3Cellipse%20cx%3D%22191%22%20cy%3D%22128%22%20rx%3D%228%22%20ry%3D%2212%22%20fill%3D%22%2327342a%22%2F%3E%3Cellipse%20cx%3D%22257%22%20cy%3D%22128%22%20rx%3D%228%22%20ry%3D%2212%22%20fill%3D%22%2327342a%22%2F%3E%0A%3Ccircle%20cx%3D%22194%22%20cy%3D%22124%22%20r%3D%223%22%20fill%3D%22white%22%2F%3E%3Ccircle%20cx%3D%22260%22%20cy%3D%22124%22%20r%3D%223%22%20fill%3D%22white%22%2F%3E%0A%3Cpath%20d%3D%22M179%20115%20Q190%20108%20200%20114%22%20fill%3D%22none%22%20stroke%3D%22%2339453a%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M247%20114%20Q258%20108%20268%20115%22%20fill%3D%22none%22%20stroke%3D%22%2339453a%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3C%21--%20muzzle%20--%3E%0A%3Cellipse%20cx%3D%22225%22%20cy%3D%22166%22%20rx%3D%2248%22%20ry%3D%2230%22%20fill%3D%22url%28%23pink%29%22%20stroke%3D%22%23e98f8d%22%20stroke-width%3D%222%22%2F%3E%0A%3Cellipse%20cx%3D%22207%22%20cy%3D%22163%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23c9676d%22%2F%3E%3Cellipse%20cx%3D%22243%22%20cy%3D%22163%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23c9676d%22%2F%3E%0A%3Cpath%20d%3D%22M212%20179%20Q225%20190%20238%20179%22%20fill%3D%22none%22%20stroke%3D%22%23a84f58%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3C%21--%20cheeks%20--%3E%0A%3Cellipse%20cx%3D%22166%22%20cy%3D%22153%22%20rx%3D%2212%22%20ry%3D%227%22%20fill%3D%22%23f7b5a9%22%20opacity%3D%22.6%22%2F%3E%3Cellipse%20cx%3D%22284%22%20cy%3D%22153%22%20rx%3D%2212%22%20ry%3D%227%22%20fill%3D%22%23f7b5a9%22%20opacity%3D%22.6%22%2F%3E%0A%3C%21--%20little%20bell%20%2B%20collar%20--%3E%0A%3Cpath%20d%3D%22M174%20203%20Q220%20222%20273%20201%22%20fill%3D%22none%22%20stroke%3D%22%23e6b84d%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M213%20214%20Q225%20206%20237%20214%20L235%20235%20Q225%20244%20215%20235Z%22%20fill%3D%22%23f4c653%22%20stroke%3D%22%23d4a43d%22%20stroke-width%3D%222%22%2F%3E%0A%3Ccircle%20cx%3D%22225%22%20cy%3D%22222%22%20r%3D%223%22%20fill%3D%22%23fff4bd%22%2F%3E%0A%3C%21--%20smile%20details%20--%3E%0A%3Cpath%20d%3D%22M205%20180%20Q225%20197%20245%20180%22%20fill%3D%22none%22%20stroke%3D%22%23a84f58%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3C%21--%20little%20freckles%20--%3E%0A%3Ccircle%20cx%3D%22195%22%20cy%3D%22171%22%20r%3D%222%22%20fill%3D%22%23d8787c%22%2F%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22177%22%20r%3D%221.7%22%20fill%3D%22%23d8787c%22%2F%3E%3Ccircle%20cx%3D%22251%22%20cy%3D%22171%22%20r%3D%222%22%20fill%3D%22%23d8787c%22%2F%3E%0A%3C%2Fsvg%3E" alt="A friendly cartoon cow smiling on a green farm">
-          <!-- Optional video: set the VIDEO_URL constant in the script below to your MP4/WebM URL.
-               The animated SVG cow remains visible if the video cannot load. -->
-          <video class="cow-video" id="cowVideo" autoplay muted loop playsinline aria-label="Looping cartoon cow animation" hidden></video>
-          <div class="grass-front"></div>
-          <span class="flower flower-one">✿</span><span class="flower flower-two">✿</span><span class="flower flower-three">✿</span>
-          <span class="sparkle sparkle-one">✦</span><span class="sparkle sparkle-two">✧</span>
-        </div>
-        <div class="art-caption"><span class="caption-check">✓</span><span data-en="A little more joy in every milking" data-kn="ಪ್ರತಿ ಹಾಲು ಕರೆಯುವ ಕೆಲಸದಲ್ಲೂ ಸಂತೋಷ">A little more joy in every milking</span></div>
+      <div class="form-row">
+        <label for="herdSize">Herd size</label>
+        <select id="herdSize" required>
+          <option value="">Choose herd size</option>
+          <option>1–20 animals</option>
+          <option>21–75 animals</option>
+          <option>76–200 animals</option>
+          <option>200+ animals</option>
+        </select>
       </div>
-      <div class="hero-bottom"><span data-en="LESS PAPERWORK" data-kn="ಕಡಿಮೆ ಕಾಗದದ ಕೆಲಸ">LESS PAPERWORK</span><i></i><span data-en="BETTER FARM VISIBILITY" data-kn="ಉತ್ತಮ ನಿರ್ವಹಣೆ">BETTER FARM VISIBILITY</span><i></i><span data-en="HAPPIER FARM DAYS" data-kn="ಸಂತೋಷದ ಹೈನುಗಾರಿಕೆ">HAPPIER FARM DAYS</span></div>
-    </section>
 
-    <section class="stats-strip" aria-label="System highlights">
-      <div class="stats-inner">
-        <div class="stat-item"><span class="stat-emoji">🐄</span><div><strong><span class="counter" data-target="100">0</span><span>+</span></strong><small data-en="Cattle records ready" data-kn="ಜಾನುವಾರು ದಾಖಲೆಗಳು">Cattle records ready</small></div></div>
-        <div class="stat-item"><span class="stat-emoji">🥛</span><div><strong><span class="counter" data-target="2">0</span><span>x</span></strong><small data-en="Daily milk entries" data-kn="ದಿನಕ್ಕೆ ಹಾಲಿನ ದಾಖಲೆ">Daily milk entries</small></div></div>
-        <div class="stat-item"><span class="stat-emoji">📊</span><div><strong><span class="counter" data-target="1">0</span><span> place</span></strong><small data-en="For your farm records" data-kn="ಎಲ್ಲಾ ಹೈನು ದಾಖಲೆಗಳಿಗೆ">For your farm records</small></div></div>
-        <div class="stats-note" data-en="Your farm, in better focus." data-kn="ನಿಮ್ಮ ಹೈನುಗಾರಿಕೆ — ಇನ್ನಷ್ಟು ಸ್ಪಷ್ಟವಾಗಿ.">Your farm, in better focus.</div>
+      <div class="form-row">
+        <label for="priority">Main priority</label>
+        <select id="priority" required>
+          <option value="">Choose a priority</option>
+          <option>Milk production</option>
+          <option>Animal health</option>
+          <option>Breeding and calving</option>
+          <option>Feed and expenses</option>
+          <option>All farm records</option>
+        </select>
       </div>
-    </section>
 
-    <section class="section-wrap features-section" id="features">
-      <div class="section-heading reveal">
-        <span class="eyebrow"><span>✳</span><span data-en="YOUR FARM, IN GOOD HANDS" data-kn="ನಿಮ್ಮ ಹೈನುಗಾರಿಕೆ, ಉತ್ತಮ ನಿರ್ವಹಣೆಯಲ್ಲಿ">YOUR FARM, IN GOOD HANDS</span></span>
-        <h2 data-en="All the moving parts.<br><em>One calm place.</em>" data-kn="ಎಲ್ಲಾ ಕೆಲಸಗಳಿಗೂ<br><em>ಒಂದೇ ಸರಳ ಸ್ಥಳ.</em>">All the moving parts.<br><em>One calm place.</em></h2>
-        <p data-en="Spend less time searching through notebooks and more time caring for your animals." data-kn="ದಾಖಲೆ ಪುಸ್ತಕಗಳಲ್ಲಿ ಹುಡುಕುವ ಸಮಯ ಕಡಿಮೆ ಮಾಡಿ, ಜಾನುವಾರುಗಳ ಆರೈಕೆಗೆ ಹೆಚ್ಚು ಸಮಯ ನೀಡಿ.">Spend less time searching through notebooks and more time caring for your animals.</p>
-      </div>
-      <div class="feature-grid">
-        <article class="feature-card feature-green reveal"><div class="feature-top"><span class="feature-icon">🥛</span><span class="feature-number">01</span></div><h3 data-en="Milk collection" data-kn="ಹಾಲು ಸಂಗ್ರಹ">Milk collection</h3><p data-en="Record morning and evening milk, quantity, fat and rate without the notebook scramble." data-kn="ಬೆಳಗ್ಗೆ ಮತ್ತು ಸಂಜೆ ಹಾಲಿನ ಪ್ರಮಾಣ, ಫ್ಯಾಟ್ ಮತ್ತು ದರವನ್ನು ಸುಲಭವಾಗಿ ದಾಖಲಿಸಿ.">Record morning and evening milk, quantity, fat and rate without the notebook scramble.</p><div class="mini-chart"><span style="height:36%"></span><span style="height:58%"></span><span style="height:46%"></span><span style="height:76%"></span><span style="height:64%"></span><span style="height:91%"></span><span style="height:72%"></span></div></article>
-        <article class="feature-card feature-yellow reveal"><div class="feature-top"><span class="feature-icon">🐮</span><span class="feature-number">02</span></div><h3 data-en="Cattle care" data-kn="ಜಾನುವಾರುಗಳ ಆರೈಕೆ">Cattle care</h3><p data-en="Keep animal details, vaccination dates, breeding notes and health history together." data-kn="ಜಾನುವಾರುಗಳ ವಿವರ, ಲಸಿಕೆ ದಿನಾಂಕ, ಸಂತಾನೋತ್ಪತ್ತಿ ಮತ್ತು ಆರೋಗ್ಯ ದಾಖಲೆಗಳನ್ನು ಒಟ್ಟಿಗೆ ಇಡಿ.">Keep animal details, vaccination dates, breeding notes and health history together.</p><div class="animal-pills"><span>🐄 #001</span><span>🐃 #002</span><span>🐄 #003</span></div></article>
-        <article class="feature-card feature-lilac reveal"><div class="feature-top"><span class="feature-icon">🧾</span><span class="feature-number">03</span></div><h3 data-en="Payments & expenses" data-kn="ಪಾವತಿ ಮತ್ತು ಖರ್ಚು">Payments & expenses</h3><p data-en="See supplier payments, feed expenses and daily income with fewer calculations." data-kn="ಪೂರೈಕೆದಾರರ ಪಾವತಿ, ಮೇವು ಖರ್ಚು ಮತ್ತು ದೈನಂದಿನ ಆದಾಯವನ್ನು ಸುಲಭವಾಗಿ ನೋಡಿ.">See supplier payments, feed expenses and daily income with fewer calculations.</p><div class="receipt-line"><span data-en="Today's balance" data-kn="ಇಂದಿನ ಬಾಕಿ">Today's balance</span><strong>₹ 2,450</strong></div></article>
-        <article class="feature-card feature-blue reveal"><div class="feature-top"><span class="feature-icon">📈</span><span class="feature-number">04</span></div><h3 data-en="Clear reports" data-kn="ಸ್ಪಷ್ಟ ವರದಿಗಳು">Clear reports</h3><p data-en="Turn everyday entries into useful daily and monthly reports you can print or export." data-kn="ದೈನಂದಿನ ದಾಖಲೆಗಳಿಂದ ಮುದ್ರಿಸಲು ಅಥವಾ ರಫ್ತು ಮಾಡಲು ಸಾಧ್ಯವಾದ ವರದಿಗಳನ್ನು ಪಡೆಯಿರಿ.">Turn everyday entries into useful daily and monthly reports you can print or export.</p><div class="report-preview"><span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span><span>MAY</span><span>JUN</span></div></article>
-      </div>
-    </section>
+      <button class="btn" type="submit" style="width:100%">
+        Create sample overview →
+      </button>
+      <div class="success" id="formSuccess" role="status"></div>
+    </form>
+  </div>
+</div>
 
-    <section class="workflow-section" id="how-it-works">
-      <div class="section-wrap workflow-layout">
-        <div class="workflow-copy reveal"><span class="eyebrow"><span>🌾</span><span data-en="SIMPLE BY DESIGN" data-kn="ಸರಳ ಬಳಕೆಗಾಗಿ ವಿನ್ಯಾಸ">SIMPLE BY DESIGN</span></span><h2 data-en="From the cowshed<br>to a <em>clear picture.</em>" data-kn="ಕೊಟ್ಟಿಗೆಯಿಂದ<br><em>ಸ್ಪಷ್ಟ ಲೆಕ್ಕದವರೆಗೆ.</em>">From the cowshed<br>to a <em>clear picture.</em></h2><p data-en="No complicated tools. Just a friendly flow that fits the way your farm already works." data-kn="ಕಷ್ಟದ ಸಾಧನಗಳಿಲ್ಲ. ನಿಮ್ಮ ಹೈನುಗಾರಿಕೆಯ ಕೆಲಸದ ರೀತಿಗೆ ಹೊಂದುವ ಸರಳ ವ್ಯವಸ್ಥೆ.">No complicated tools. Just a friendly flow that fits the way your farm already works.</p><a href="#get-started" class="text-link"><span data-en="Get to know the system" data-kn="ವ್ಯವಸ್ಥೆಯನ್ನು ತಿಳಿಯಿರಿ">Get to know the system</span><span>↗</span></a></div>
-        <div class="steps">
-          <article class="step-card reveal"><span class="step-num">1</span><div><h3 data-en="Add your farm details" data-kn="ಹೈನುಗಾರಿಕೆಯ ವಿವರ ಸೇರಿಸಿ">Add your farm details</h3><p data-en="Set up cattle, suppliers and staff once." data-kn="ಜಾನುವಾರು, ಪೂರೈಕೆದಾರರು ಮತ್ತು ಸಿಬ್ಬಂದಿ ವಿವರಗಳನ್ನು ಸೇರಿಸಿ.">Set up cattle, suppliers and staff once.</p></div><span class="step-art">🏡</span></article>
-          <article class="step-card reveal"><span class="step-num">2</span><div><h3 data-en="Record the day's work" data-kn="ದಿನದ ಕೆಲಸ ದಾಖಲಿಸಿ">Record the day's work</h3><p data-en="Enter milk, health notes, payments and expenses." data-kn="ಹಾಲು, ಆರೋಗ್ಯ, ಪಾವತಿ ಮತ್ತು ಖರ್ಚು ದಾಖಲಿಸಿ.">Enter milk, health notes, payments and expenses.</p></div><span class="step-art">📝</span></article>
-          <article class="step-card reveal"><span class="step-num">3</span><div><h3 data-en="See the bigger picture" data-kn="ಒಟ್ಟಾರೆ ವಿವರ ನೋಡಿ">See the bigger picture</h3><p data-en="Use clear reports to make confident decisions." data-kn="ಸ್ಪಷ್ಟ ವರದಿಗಳ ಮೂಲಕ ಉತ್ತಮ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ.">Use clear reports to make confident decisions.</p></div><span class="step-art">✨</span></article>
-        </div>
-      </div>
-    </section>
+<script>
+(function () {
+  const menu = document.getElementById("mainNav");
+  const toggle = document.getElementById("menuToggle");
 
-    <section class="about-section section-wrap" id="about">
-      <div class="about-art reveal"><div class="about-orbit orbit-one"></div><div class="about-orbit orbit-two"></div><div class="about-cow-bubble">🐮</div><span class="about-leaf leaf-a">🌿</span><span class="about-leaf leaf-b">🍀</span><span class="about-star">✦</span></div>
-      <div class="about-copy reveal"><span class="eyebrow"><span>💚</span><span data-en="ROOTED IN FARM LIFE" data-kn="ಹೈನುಗಾರಿಕೆಯ ಬದುಕಿನಿಂದ">ROOTED IN FARM LIFE</span></span><h2 data-en="Built for the people<br>who <em>feed our world.</em>" data-kn="ನಮ್ಮ ಜಗತ್ತಿಗೆ ಆಹಾರ ನೀಡುವ<br><em>ರೈತರಿಗಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ.</em>">Built for the people<br>who <em>feed our world.</em></h2><p data-en="A dairy farm is built on early mornings, patient care and a thousand small tasks. Siri Dairy brings the records together, so you can focus on what matters most: your animals and your livelihood." data-kn="ಹೈನುಗಾರಿಕೆ ಎಂದರೆ ಮುಂಜಾನೆ ಕೆಲಸ, ಕಾಳಜಿ ಮತ್ತು ಅನೇಕ ಸಣ್ಣ ಕಾರ್ಯಗಳು. ಸಿರಿ ಡೈರಿ ದಾಖಲೆಗಳನ್ನು ಒಂದೆಡೆ ಸೇರಿಸಿ, ನಿಮ್ಮ ಜಾನುವಾರು ಮತ್ತು ಜೀವನೋಪಾಯದ ಮೇಲೆ ಗಮನಹರಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.">A dairy farm is built on early mornings, patient care and a thousand small tasks. Siri Dairy brings the records together, so you can focus on what matters most: your animals and your livelihood.</p><div class="about-values"><span>✓ <span data-en="Simple to use" data-kn="ಬಳಸಲು ಸರಳ">Simple to use</span></span><span>✓ <span data-en="Useful records" data-kn="ಉಪಯುಕ್ತ ದಾಖಲೆಗಳು">Useful records</span></span><span>✓ <span data-en="Made to grow" data-kn="ಬೆಳವಣಿಗೆಗೆ ಸಹಕಾರಿ">Made to grow</span></span></div></div>
-    </section>
-
-    <section class="cta-section section-wrap" id="get-started"><div class="cta-card reveal"><div class="cta-decoration cta-circle"></div><div class="cta-decoration cta-spark">✦</div><div class="cta-content"><span class="eyebrow"><span>🌼</span><span data-en="YOUR NEXT FARM DAY STARTS HERE" data-kn="ನಿಮ್ಮ ಮುಂದಿನ ಹೈನುಗಾರಿಕೆ ದಿನ ಇಲ್ಲಿಂದ">YOUR NEXT FARM DAY STARTS HERE</span></span><h2 data-en="Ready for a little<br><em>more farm flow?</em>" data-kn="ನಿಮ್ಮ ಹೈನುಗಾರಿಕೆಯನ್ನು<br><em>ಇನ್ನಷ್ಟು ಸುಲಭಗೊಳಿಸೋಣವೇ?</em>">Ready for a little<br><em>more farm flow?</em></h2><p data-en="Bring your dairy records into one happy, organized home." data-kn="ನಿಮ್ಮ ಹೈನುಗಾರಿಕೆಯ ಎಲ್ಲಾ ದಾಖಲೆಗಳನ್ನು ಒಂದೇ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಇಡಿ.">Bring your dairy records into one happy, organized home.</p><a href="#home" class="button button-light"><span data-en="Let's get started" data-kn="ಪ್ರಾರಂಭಿಸೋಣ">Let's get started</span><span>↗</span></a></div><div class="cta-mascot">🐮<span>♥</span></div></div></section>
-  </main>
-
-  <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">✳</span><span><strong>Siri Dairy</strong><small data-en="FARM MANAGEMENT" data-kn="ಹೈನುಗಾರಿಕೆ ನಿರ್ವಹಣೆ">FARM MANAGEMENT</small></span></a><p data-en="Made with care for the people behind every glass of milk." data-kn="ಪ್ರತಿ ಹಾಲಿನ ಹನಿಯ ಹಿಂದಿರುವ ರೈತರಿಗಾಗಿ ಪ್ರೀತಿಯಿಂದ.">Made with care for the people behind every glass of milk.</p><span class="footer-copy">© <span id="year"></span> Siri Dairy</span></footer>
-  <script>
-(() => {
-  // Optional: set this to a hosted or static MP4/WebM URL to show a real video over the SVG cow.
-  // Example Django static URL: "/static/dairy/video/cow-loop.mp4"
-  const VIDEO_URL = "";
-  const languageButton = document.getElementById("languageSwitch");
-  const navLinks = document.getElementById("navLinks");
-  const menuToggle = document.getElementById("menuToggle");
-  const html = document.documentElement;
-
-  function setLanguage(language) {
-    const isKannada = language === "kn";
-    html.lang = isKannada ? "kn" : "en";
-    document.body.classList.toggle("kn", isKannada);
-    document.querySelectorAll("[data-en][data-kn]").forEach((element) => {
-      const value = isKannada ? element.dataset.kn : element.dataset.en;
-      // The page intentionally uses <br> and <em> in selected heading strings.
-      if (value.includes("<br>") || value.includes("<em>")) element.innerHTML = value;
-      else element.textContent = value;
-    });
-    languageButton.innerHTML = isKannada
-      ? '<span>EN</span><span class="lang-divider">/</span><span class="lang-active">ಕನ್ನಡ</span>'
-      : '<span class="lang-active">EN</span><span class="lang-divider">/</span><span>ಕನ್ನಡ</span>';
-    try { sessionStorage.setItem("siri-dairy-language", language); } catch (_) {}
-  }
-
-  languageButton?.addEventListener("click", () => {
-    const next = html.lang === "kn" ? "en" : "kn";
-    setLanguage(next);
+  toggle.addEventListener("click", function () {
+    const isOpen = menu.classList.toggle("open");
+    toggle.textContent = isOpen ? "×" : "☰";
+    toggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  menuToggle?.addEventListener("click", () => {
-    const open = navLinks.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(open));
-    menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
-    menuToggle.textContent = open ? "×" : "☰";
-  });
-
-  navLinks?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-      menuToggle?.setAttribute("aria-expanded", "false");
-      if (menuToggle) { menuToggle.textContent = "☰"; menuToggle.setAttribute("aria-label", "Open navigation"); }
+  menu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      menu.classList.remove("open");
+      toggle.textContent = "☰";
+      toggle.setAttribute("aria-expanded", "false");
     });
   });
 
-  const revealItems = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealItems.forEach((item) => revealObserver.observe(item));
-  } else {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
+  const modal = document.getElementById("demoModal");
+  const closeButton = document.getElementById("closeModal");
+
+  function openModal() {
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    document.getElementById("farmName").focus();
   }
 
-  const counters = document.querySelectorAll(".counter");
-  if ("IntersectionObserver" in window) {
-    const counterObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = Number(el.dataset.target || 0);
-        const start = performance.now();
-        const duration = 1000;
-        const tick = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          el.textContent = String(Math.round(target * (1 - Math.pow(1 - progress, 3))));
-          if (progress < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-        observer.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach((counter) => counterObserver.observe(counter));
+  function closeModal() {
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
   }
+
+  document.querySelectorAll("[data-open-demo]").forEach(function (button) {
+    button.addEventListener("click", openModal);
+  });
+
+  closeButton.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closeModal();
+  });
+
+  document.getElementById("demoForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("farmName").value.trim();
+    const herd = document.getElementById("herdSize").value;
+    const priority = document.getElementById("priority").value;
+    const success = document.getElementById("formSuccess");
+
+    success.textContent =
+      "Sample setup created for " + name + ". Herd: " + herd +
+      ". Main priority: " + priority +
+      ". This demo does not save or send your information.";
+
+    success.classList.add("show");
+  });
 
   document.getElementById("year").textContent = new Date().getFullYear();
-  let savedLanguage = "en";
-  try { savedLanguage = sessionStorage.getItem("siri-dairy-language") || "en"; } catch (_) {}
-  setLanguage(savedLanguage);
-  const cowVideo = document.getElementById("cowVideo");
-  if (cowVideo && VIDEO_URL.trim()) {
-    const source = document.createElement("source");
-    source.src = VIDEO_URL.trim();
-    source.type = VIDEO_URL.toLowerCase().includes(".webm") ? "video/webm" : "video/mp4";
-    cowVideo.appendChild(source);
-    cowVideo.hidden = false;
-    cowVideo.addEventListener("error", () => { cowVideo.hidden = true; });
-    cowVideo.play().catch(() => { /* muted autoplay may still be restricted by browser settings */ });
+
+  const video = document.querySelector(".hero-photo video");
+
+  if (video) {
+    video.play().catch(function () {
+      // The poster image is the fallback if autoplay is blocked.
+    });
+
+    video.addEventListener("error", function () {
+      video.style.display = "none";
+    });
   }
-
 })();
-
 </script>
+
 </body>
 </html>
